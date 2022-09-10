@@ -95,7 +95,7 @@ function getColor(d) {
             color: 'grey',
             dashArray: '3',
             fillOpacity: 0.7,
-            fillColor: getColor(feature.properties.worried)
+            fillColor: getColor(feature.properties.CarbonTax)
       };
       }
 
@@ -111,8 +111,8 @@ function getColor(d) {
 
       // update as tooltip
       info.update = function (props) {
-            this._div.innerHTML = '<h4> How worried are people about Climate Change? </h4>' +  (props ?
-            '<b>'+ 'COUNTY NAME:  ' + props.CO_NAME + '</b><br />' + props.worried + '%'
+            this._div.innerHTML = '<h4> Should businesses pay a carbon tax? </h4>' +  (props ?
+            '<b>'+ 'COUNTY NAME:  ' + props.CO_NAME + '</b><br />' + props.CarbonTax + '%'
             : 'Hover over a County');
 
       };
