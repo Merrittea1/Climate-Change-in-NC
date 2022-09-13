@@ -14,6 +14,7 @@
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <style>
+ @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 
 
@@ -111,7 +112,7 @@ function getColor(d) {
 
       // update as tooltip
       info.update = function (props) {
-            this._div.innerHTML = '<h4> Should businesses pay a carbon tax? </h4>' +  (props ?
+            this._div.innerHTML = '<h4> Require Fossil Fuel companies <br> to pay a Carbon Tax </h4>' +  (props ?
             '<b>'+ 'COUNTY NAME:  ' + props.CO_NAME + '</b><br />' + props.CarbonTax + '%'
             : 'Hover over a County');
 
@@ -181,7 +182,7 @@ function getColor(d) {
           labels.push('<i style="background:' + colors[i] + '"></i> ' + grades[i] + ' - ' + grades[i + 1]);
       }
 
-      labels.push('<i style="background:' + colors[grades.length - 1] + '"></i> ' + grades[grades.length - 1] + ' +');
+      labels.push('<i style="background:' + colors[grades.length - 1] + '"></i> ' + grades[grades.length - 1]);
       $(".legend").html(labels.join('<br>'));
 
       // 5. create the credits

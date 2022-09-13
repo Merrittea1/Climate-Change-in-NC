@@ -15,6 +15,7 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <style>
 
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 
     </style>
@@ -111,7 +112,7 @@ function getColor(d) {
 
       // update as tooltip
       info.update = function (props) {
-            this._div.innerHTML = '<h4> How many people support offshore drilling? </h4>' +  (props ?
+            this._div.innerHTML = '<h4> Expand offshore drilling for <br> oil and natural gas off US coast </h4>' +  (props ?
             '<b>'+ 'COUNTY NAME:  ' + props.CO_NAME + '</b><br />' + props.Offshore + '%'
             : 'Hover over a County');
 
@@ -132,8 +133,8 @@ function getColor(d) {
                   layer.setStyle({
                   weight: 2,
                   opacity: 0.8,
-                  color: 'Red',
-                  fillColor: 'red',
+                  color: 'Purple',
+                  fillColor: 'Purple',
                   fillOpacity: 0.5
                   });
                   layer.bringToFront();
@@ -181,7 +182,7 @@ function getColor(d) {
           labels.push('<i style="background:' + colors[i] + '"></i> ' + grades[i] + ' - ' + grades[i + 1]);
       }
 
-      labels.push('<i style="background:' + colors[grades.length - 1] + '"></i> ' + grades[grades.length - 1] + ' +');
+      labels.push('<i style="background:' + colors[grades.length - 1] + '"></i> ' + grades[grades.length - 1]);
       $(".legend").html(labels.join('<br>'));
 
       // 5. create the credits
