@@ -78,6 +78,7 @@
 
 body {
   margin: 0;
+  height: calc(100% - 51px);
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
@@ -109,12 +110,12 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 }
 
 h1, .h1 {
-  font-size: calc(1.375rem + 1.5vw);
+  font-size: calc(1.5rem);
 }
 @media (min-width: 1200px) {
   h1, .h1 {
-    font-size: 2rem;
-    color:#d4dff1;
+    font-size: 1.4rem;
+    color:white;
   }
 }
 
@@ -4054,11 +4055,9 @@ textarea.form-control-lg {
   padding-top: .25rem;
   padding-bottom: .25rem;
   margin-right: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   text-decoration: none;
   white-space: nowrap;
-  color: white;
-  font: Garamond;
   
 }
 .navbar-nav {
@@ -7326,7 +7325,7 @@ textarea.form-control-lg {
 }
 
 .mt-5 {
-  margin-top: 3rem !important;
+  margin-top: 0rem !important;
 }
 
 .mt-auto {
@@ -11296,7 +11295,8 @@ textarea.form-control-lg {
 
   html { height:100%;}
 
-    body {height:100%;padding: 0;
+    body {height:calc(100% - 70px);
+      padding: 0;
       margin: 0;
     }
 
@@ -11329,7 +11329,7 @@ color: #777777;
 z-index: 1000;
 position: absolute;
 right: 1100px;
-top: 425px;
+top: 350px;
 padding: 6px 8px;
 left: 22px;
 font: 16px, Helvetica;
@@ -11343,7 +11343,7 @@ width: 300px;
 
 .legend i {
 width:50px;
-height: 15px;
+height: 20px;
 float: left;
 margin-right: 20px;
 margin-left: 20px;
@@ -11375,10 +11375,10 @@ z-index: 800;
 section {
   z-index: 100;
   position: absolute;
-  bottom: 0;
+  bottom: 30px;
   left: 10px;
   width: 325px;
-  Height: 70%;
+  Height: 80%;
   margin: 10px auto;
   padding: 0 10px;
   background: white;
@@ -11388,7 +11388,7 @@ section {
 }
 
 h3 {
-  top: 150px;
+  top: 175px;
   position: absolute;
 }
 
