@@ -35,14 +35,13 @@
      <!-- Responsive navbar-->
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-          <a class="navbar-brand" href="#">North Carolina Climate Explorer</a>
+          <a class="navbar-brand" href="#"> <h1>North Carolina Climate Explorer </h1></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                  <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                  <li class="nav-item"><a class="nav-link active" aria-current="page" href="ReadMe.md">Help</a></li>
                   <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                      <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Maps</a>
                       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                           <li><a class="dropdown-item" href="index.html">Worried about Climate Change</a></li>
                           <li><a class="dropdown-item" href="CarbonTax.html">Carbon Tax</a></li>
@@ -62,22 +61,23 @@
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
     <div id='map'></div>
-    <div class='legend'></div>
-    <div class = 'radio'></div>
-    
+         <div class='legend'></div>
+         <div class = 'info'></div>
+   
+<section>
+    <!-- holds legend and info panel-->
+    <h3> __________________________</h3>
+</section>
+
+
+
     <script>
 
       // 1. create the map object and the base layer.
-      var map = L.map('map').setView([35.77227563514003, -81.34133961318312], 7); //latlong coordinates centered over US
-      L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png').addTo(map);
+      var map = L.map('map').setView([35.31036066067766, -79.84582240064825], 7.5); //latlong coordinates centered over US
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png').addTo(map);
 
-      // classes in legend
-      var grades = [0,10,20,30,40,50,60,70,80,90,100];
-
-
-      // color ramp
-    var colors = chroma.scale('RdYlBu').colors(grades.length);
-
+      new L.Control.Zoom({ position: 'topright' }).addTo(map);
 // get the color based on the class of the input value
 function getColor(d) {
             for (var i = 0; i < grades.length - 1; i++) {
@@ -97,29 +97,6 @@ function getColor(d) {
             fillColor: getColor(feature.properties.worried)
       };
       }
-
-//add gejson
-      var geojson = null;
-
-      var info = L.control();
-      info.onAdd = function (map) {
-          this._div = L.DomUtil.create('div', 'info'); 
-          this.update();
-          return this._div;
-      };
-
-      // update as tooltip
-      info.update = function (props) {
-            this._div.innerHTML = '<h4> Worried about global warming </h4>' +  (props ?
-            '<b>'+ 'COUNTY NAME:  ' + props.CO_NAME + '</b><br />' + props.worried + '%'
-            : 'Hover over a County');
-
-      };
-
-      info.addTo(map);
-
-  
-
 
 
       //highlight a feature when the mouse hovers on it.
@@ -163,18 +140,39 @@ function getColor(d) {
                   click: zoomToFeature,
                   mouseout: resetHighlight
                   });
-                  }
-                  
-                  
+                  } 
+
+var info = L.control();
+info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info'); 
+    this.update();
+    return this._div;
+};    
 //Add the counties GeoJSON layer to the map
       geojson = L.geoJson.ajax("assets/final.geojson", {
           style: style,
           onEachFeature: onEachFeature
       }).addTo(map);
+ 
+      // classes in legend
+ var grades = [0,10,20,30,40,50,60,70,80,90,100];
+
+
+// color ramp
+var colors = chroma.scale('RdYlBu').colors(grades.length);
 
 // create the legend
 
-      var labels = [];
+info.update = function (props) {
+            this._div.innerHTML = '<h4> Worried about global warming </h4>' +  (props ?
+            '<b>'+ 'COUNTY NAME:  ' + props.CO_NAME + '</b><br />' + props.worried + '%'
+            : 'Hover over a County');
+
+      };
+
+      info.addTo(map);
+
+      var labels = ["% worried about global warming"];
 
       for (var i = 0; i < grades.length - 1; i++) {
           labels.push('<i style="background:' + colors[i] + '"></i> ' + grades[i] + ' - ' + grades[i + 1]);
@@ -186,8 +184,7 @@ function getColor(d) {
       // 5. create the credits
 
       map.attributionControl.addAttribution('NC Opinion data &copy; <a href="https://climatecommunication.yale.edu/visualizations-data/ycom-us/">Yale Climate Opinion Data</a> | This map is made by Eliza Merritt');
-  
-  
+    
   
     </script>
 
