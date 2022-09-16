@@ -78,6 +78,7 @@
 
 body {
   margin: 0;
+  height: calc(100% - 51px);
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
@@ -90,7 +91,7 @@ body {
 }
 
 hr {
-  margin: 1rem 0;
+  margin: 0rem 0;
   color: inherit;
   background-color: currentColor;
   border: 0;
@@ -109,11 +110,12 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 }
 
 h1, .h1 {
-  font-size: calc(1.375rem + 1.5vw);
+  font-size: calc(1.5rem);
 }
 @media (min-width: 1200px) {
   h1, .h1 {
-    font-size: 2.5rem;
+    font-size: 1.4rem;
+    color:white;
   }
 }
 
@@ -4035,6 +4037,7 @@ textarea.form-control-lg {
   justify-content: space-between;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  
 }
 .navbar > .container,
 .navbar > .container-fluid,
@@ -4049,12 +4052,13 @@ textarea.form-control-lg {
   justify-content: space-between;
 }
 .navbar-brand {
-  padding-top: 0.3125rem;
-  padding-bottom: 0.3125rem;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
   margin-right: 1rem;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   text-decoration: none;
   white-space: nowrap;
+  
 }
 .navbar-nav {
   display: flex;
@@ -4062,6 +4066,7 @@ textarea.form-control-lg {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  
 }
 .navbar-nav .nav-link {
   padding-right: 0;
@@ -7320,7 +7325,7 @@ textarea.form-control-lg {
 }
 
 .mt-5 {
-  margin-top: 3rem !important;
+  margin-top: 0rem !important;
 }
 
 .mt-auto {
@@ -11290,7 +11295,8 @@ textarea.form-control-lg {
 
   html { height:100%;}
 
-    body {height:100%;padding: 0;
+    body {height:calc(100% - 70px);
+      padding: 0;
       margin: 0;
     }
 
@@ -11302,55 +11308,59 @@ textarea.form-control-lg {
     .info {
 z-index: 1000;
 position: absolute;
-right: 950px;
-top: 20px;
-padding: 6px 8px;
-font: 14px 'Montserrat', sans-serif, bold;
+right: 1100px;
+top: 30px;
+padding: 6px 6px;
+font: 14px Helvetica, sans-serif, bold;
 text-align: left;
 background: white;
 background: rgba(255, 255, 255, 0.8);
-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 border-radius: 5px;
+width: 300px;
 }
 
 
 .info h1 {
-font-size: 16px;
-margin: 0 0 5px;
+font-size: 10px;
+margin: 0 0 0px;
 color: #777777;
 }
 .legend {
 z-index: 1000;
 position: absolute;
-right: 1165px;
-bottom: 20px;
-padding: 1px 8px;
-font: 14px 'Montserrat', sans-serif;
+right: 1100px;
+top: 350px;
+padding: 6px 8px;
+left: 22px;
+font: 16px, Helvetica;
+text-align: left;
 background: white;
 background: rgba(255, 255, 255, 0.8);
-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 border-radius: 5px;
+width: 300px;
 }
 
 
 .legend i {
-width: 100px;
-height: 16px;
+width:50px;
+height: 20px;
 float: left;
-margin-right: 8px;
+margin-right: 20px;
+margin-left: 20px;
 opacity: 0.7;
 }
 
+
 form {
-margin-top: 1em;
+margin-top: 0em;
 position: absolute;
 margin-top: 0;
 top: 600px;
 left: 100px;
 font-size: .75em;
-font-family: 'Montserrat', sans-serif;
+font-family: Arial, Helvetica, sans-serif, sans-serif;
 letter-spacing: .04em;
-padding: 10px 15px;
+padding: 10px 10px;
 background: rgba(256, 256, 256);
 border: 1px solid grey;
 border-radius: 3px;
@@ -11361,3 +11371,24 @@ z-index: 800;
   min-zoom: 1.0;
   max-zoom: 2.0;
 }
+
+section {
+  z-index: 100;
+  position: absolute;
+  bottom: 30px;
+  left: 10px;
+  width: 325px;
+  Height: 80%;
+  margin: 10px auto;
+  padding: 0 10px;
+  background: white;
+  border: 5px blue;
+  border-radius: 3px;
+  z-index: 800;
+}
+
+h3 {
+  top: 175px;
+  position: absolute;
+}
+
