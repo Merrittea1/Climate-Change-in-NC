@@ -3,6 +3,7 @@
   <head>
 
     <title> Climate Change Opinions in North Carolina</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.0/css/all.css">
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.0/dist/leaflet.css"/>
@@ -25,7 +26,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.3.4/chroma.min.js"></script>
     <link href="css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.0/dist/leaflet.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.3.4/chroma.min.js"></script>
   
   
@@ -34,13 +34,14 @@
      <!-- Responsive navbar-->
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-          <a class="navbar-brand" href="#">North Carolina Climate Explorer</a>
+          <a class="navbar-brand" href="#"> NC Climate Change Opinions Explorer</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                   <li class="nav-item"><a class="nav-link active" aria-current="page" href="https://github.com/Merrittea1/Climate-Change-in-NC/blob/main/ReadMe.md"> More Info</a></li>
+                  <li class="layer-control"><a class= "button" aria-current="page" href="https://github.com/Merrittea1/Climate-Change-in-NC/blob/main/ReadMe.md"> More Info</a</li>
                   <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Maps </a>
+                      <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Opinions </a>
                       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                           <li><a class="dropdown-item" href="index.html">Worried about Climate Change</a></li>
                           <li><a class="dropdown-item" href="CarbonTax.html">Carbon Tax</a></li>
@@ -61,18 +62,21 @@
 <script src="js/scripts.js"></script>
     <div id='map'></div>
     <div class='legend'></div>
-    <div class = 'radio'></div>
+    
+
+
     <section>
         <!-- holds legend and info panel-->
-        <h3> __________________________</h3>
+       
     </section>
+    
     <script>
 
       // 1. create the map object and the base layer.
       var map = L.map('map').setView([35.31036066067766, -79.84582240064825], 7.5); //latlong coordinates centered over US
       L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png').addTo(map);
 
-      new L.Control.Zoom({ position: 'topright' }).addTo(map);
+    
       // classes in legend
       var grades = [0,10,20,30,40,50,60,70,80,90,100];
 
@@ -101,6 +105,9 @@ function getColor(d) {
       }
 
 //add gejson
+var overlayMaps = {
+    "Counties": points
+};
       var geojson = null;
 
       var info = L.control();
@@ -109,20 +116,18 @@ function getColor(d) {
           this.update();
           return this._div;
       };
-
+ 
       // update as tooltip
-      info.update = function (props) {
-            this._div.innerHTML = '<h4> Worried about global warming</h4>' +  (props ?
+ info.update = function (props) {
+            this._div.innerHTML = '<h4> Estimated % of adults who are worried about global warming (natl. avg. 65%), 2021</h4>' +  (props ?
             '<b>'+ 'COUNTY NAME:  ' + props.CO_NAME + '</b><br />' + props.worried + '%'
-            : 'Hover over a County');
+            : '<h5>Hover over a County</h5>');
 
       };
 
       info.addTo(map);
 
   
-
-
 
       //highlight a feature when the mouse hovers on it.
 
@@ -157,26 +162,43 @@ function getColor(d) {
     function zoomToFeature(e) {
                   map.fitBounds(e.target.getBounds());
                   }
-
+  
 
     function onEachFeature(feature, layer) {
                   layer.on({
                   mouseover: highlightFeature,
-                  click: zoomToFeature,
+                    click: zoomToFeature,
                   mouseout: resetHighlight
                   });
                   }
-                  
-                  
-//Add the counties GeoJSON layer to the map
+
+//Add the counties GeoJSON layer to the ma
+
+var points = L.geoJson.ajax("assets/NC_Centroids_2.geojson", {
+        style: style,
+        onEachFeature: function (feature, layer) {
+           layer.bindTooltip(feature.properties.CO_NAME,{permanent: true, className: "labels", direction: 'center', offset: L.point({x: 0, y: -25})}).setOpacity(0.0);
+        },
+        pointToLayer: function(feature,latlng) {
+            var id = 0;
+            if (feature.properties.type == "point") {id = 0; }
+            else if (feature.properties.type != "Point" ) {id = 1;}
+            return new L.Marker(latlng,{opacity:0});
+        },
+        attribution: 'NC Opinion data &copy; <a href="https://climatecommunication.yale.edu/visualizations-data/ycom-us/">Yale Climate Opinion Data</a> | This map is made by Eliza Merritt'
+        }).addTo(map);
+        
+
       geojson = L.geoJson.ajax("assets/final.geojson", {
           style: style,
-          onEachFeature: onEachFeature
+          onEachFeature: onEachFeature,
       }).addTo(map);
+    
 
-// create the legend
+      
+ // create the legend
 
-      var labels = ["% worried about global warming"];
+      var labels = ["<h6> % worried about global warming </h6>"];
 
       for (var i = 0; i < grades.length - 1; i++) {
           labels.push('<i style="background:' + colors[i] + '"></i> ' + grades[i] + ' - ' + grades[i + 1]);
@@ -188,11 +210,13 @@ function getColor(d) {
       // 5. create the credits
 
       map.attributionControl.addAttribution('NC Opinion data &copy; <a href="https://climatecommunication.yale.edu/visualizations-data/ycom-us/">Yale Climate Opinion Data</a> | This map is made by Eliza Merritt');
-  
-  
-  
+
+
+      // add centroid points
+      var layerControl = L.control.layers(null, overlayMaps).addTo(map
+      )
     </script>
 
-  
+
 </body>
 </html>
