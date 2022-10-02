@@ -65,13 +65,13 @@
     <div class = 'radio'></div>
     <section>
         <!-- holds legend and info panel-->
-        <h3> __________________________</h3>
+        <img src="assets/Offshore.png" alt="worried">
     </section>
     <script>
 
       // 1. create the map object and the base layer.
       var map = L.map('map').setView([35.31036066067766, -79.84582240064825], 7.5); //latlong coordinates centered over US
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png').addTo(map);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png').addTo(map);
 
      
       // classes in legend
@@ -188,22 +188,7 @@ points= L.geoJson.ajax("assets/NC_Centroids_2.geojson", {
           onEachFeature: onEachFeature
       }).addTo(map);
 
-// create the legend
 
-      var labels = ["<h6>% support for offshore drilling</h6>"];
-
-      for (var i = 0; i < grades.length - 1; i++) {
-          labels.push('<i style="background:' + colors[i] + '"></i> ' + grades[i] + ' - ' + grades[i + 1]);
-      }
-
-      labels.push('<i style="background:' + colors[grades.length - 1] + '"></i> ' + grades[grades.length - 1]);
-      $(".legend").html(labels.join('<br>'));
-
-      // 5. create the credits
-
-      map.attributionControl.addAttribution('NC Opinion data &copy; <a href="https://climatecommunication.yale.edu/visualizations-data/ycom-us/">Yale Climate Opinion Data</a> | This map is made by Eliza Merritt');
-  
-  
   
     </script>
 

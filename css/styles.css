@@ -12262,6 +12262,7 @@ body {
 .info {
   z-index: 1000;
   position: relative;
+  right: 800px;
   float:left;
   padding: 6px 8px;
   font: 16px, Helvetica;
@@ -12282,30 +12283,20 @@ body {
   color: #777777;
 }
 
-.legend {
-  z-index: 1000;
+section {
+  z-index: 100;
   position: absolute;
-  right: 1100px;
-  top: 450px;
-  padding: 6px 8px;
-  left: 22px;
-  font: 16px, Helvetica;
-  text-align: center;
-  background: white;
-  border-radius: 5px;
-  width: 300px;
+  bottom: 30px;
+  left:20px;
+  width: 700px;
+  Height: 25%;
+  margin: 10px auto;
+  padding: 0 10px;
+  background: transparent;
+  border: 5px blue;
+  border-radius: 3px;
+  z-index: 800;
 }
-
-
-.legend i {
-  width: 50px;
-  height: 20px;
-  float: left;
-  margin-right: 20px;
-  margin-left: 20px;
-  opacity: 0.7;
-}
-
 
 @viewport {
   zoom: 1.0;
@@ -12330,7 +12321,7 @@ h6{
 
 .labels{
   position:sticky;
-  font-size: 6pt;
+  font-size: 8pt;
 }    
 
 .leaflet-tooltip {
@@ -12354,3 +12345,14 @@ h6{
   margin-right:auto;
   width:100%;
 }
+
+img{
+  z-index: 100;
+  position: absolute;
+  bottom: 5px;
+  left:20px;
+  width: 580px;
+  Height: auto;
+  z-index: 800;
+}
+
