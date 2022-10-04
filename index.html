@@ -39,7 +39,6 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                   <li class="nav-item"><a class="nav-link active" aria-current="page" href="https://github.com/Merrittea1/Climate-Change-in-NC/blob/main/ReadMe.md"> More Info</a></li>
-                  <li class="layer-control"><a class= "button" aria-current="page" href="https://github.com/Merrittea1/Climate-Change-in-NC/blob/main/ReadMe.md"> More Info</a</li>
                   <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Opinions </a>
                       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -63,13 +62,11 @@
     <div id='map'></div>
 
     
-
-
-    <section>
+   
         <!-- holds legend -->
         <img src="assets/Worried.png" alt="worried">
        
-    </section>
+
     
     <script>
 
@@ -105,7 +102,7 @@ function getColor(d) {
       };
       }
 
-//add gejson
+//add geojson
       var geojson = null;
 
       var info = L.control();
@@ -125,7 +122,7 @@ function getColor(d) {
 
       info.addTo(map);
 
-  
+
 
       //highlight a feature when the mouse hovers on it.
 
@@ -191,15 +188,16 @@ var points = L.geoJson.ajax("assets/NC_Centroids_2.geojson", {
           style: style,
           onEachFeature: onEachFeature,
       }).addTo(map);
-    
+
+
+//leaflet layer control
+
+var counties = {
+    "County Names": points,
+};
+var layerControl = L.control.layers(null, counties, {collapsed:false}).addTo(map);
 
       
- // create the legend
-
-   
-
-
-      // add centroid points
     
     </script>
 

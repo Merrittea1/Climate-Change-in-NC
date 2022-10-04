@@ -12284,18 +12284,16 @@ body {
 }
 
 section {
-  z-index: 100;
   position: absolute;
-  bottom: 30px;
-  left:20px;
-  width: 700px;
-  Height: 25%;
-  margin: 10px auto;
+  margin: 0px auto;
   padding: 0 10px;
   background: transparent;
   border: 5px blue;
   border-radius: 3px;
   z-index: 800;
+  font-size: 13px;
+ 
+ 
 }
 
 @viewport {
@@ -12356,3 +12354,10 @@ img{
   z-index: 800;
 }
 
+.leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+  /* border: 2px solid rgba(0,0,0,0.2); */
+  background-clip: padding-box;
+  background: white;
+  top:10px;
+  
+}

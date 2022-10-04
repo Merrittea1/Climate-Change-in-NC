@@ -63,10 +63,10 @@
     <div id='map'></div>
     <div class='legend'></div>
     <div class = 'radio'></div>
-    <section>
+ 
         <!-- holds legend and info panel-->
         <img src="assets/Offshore.png" alt="worried">
-    </section>
+
     <script>
 
       // 1. create the map object and the base layer.
@@ -188,6 +188,11 @@ points= L.geoJson.ajax("assets/NC_Centroids_2.geojson", {
           onEachFeature: onEachFeature
       }).addTo(map);
 
+
+      var counties = {
+    "County Names": points,
+};
+var layerControl = L.control.layers(null, counties, {collapsed:false}).addTo(map);
 
   
     </script>
