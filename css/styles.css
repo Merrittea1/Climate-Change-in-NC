@@ -12262,7 +12262,7 @@ body {
 .info {
   z-index: 1000;
   position: relative;
-  right: 820px;
+  right: 855px;
   float:left;
   padding: 6px 8px;
   font: 16px, Helvetica;
@@ -12348,7 +12348,7 @@ img{
   z-index: 100;
   position: absolute;
   bottom: 12px;
-  right: 820px;
+  right: 855px;
   width: 580px;
   Height: auto;
   z-index: 800;
@@ -12359,7 +12359,7 @@ img{
   /* border: 2px solid rgba(0,0,0,0.2); */
   background-clip: padding-box;
   background: white;
-  top: 525px;
+  top: 545px;
   right: 20px;
   position: absolute;
 }
